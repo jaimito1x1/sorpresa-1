@@ -1,0 +1,250 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Ximena 🌷</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ffe6ef, #fff5f8, #ffe0eb);
+    font-family: "Segoe UI", sans-serif;
+    overflow: hidden;
+    color: #5a3542;
+}
+
+.container {
+    width: 90%;
+    max-width: 430px;
+    text-align: center;
+    background: rgba(255,255,255,0.75);
+    padding: 30px 22px;
+    border-radius: 25px;
+    box-shadow: 0 10px 35px rgba(120,60,80,0.15);
+    backdrop-filter: blur(8px);
+    animation: aparecer 1.2s ease;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 5px;
+    color: #b84c70;
+}
+
+.subtitulo {
+    font-size: 15px;
+    color: #8b6571;
+    margin-bottom: 20px;
+}
+
+.ramo {
+    font-size: 95px;
+    cursor: pointer;
+    display: inline-block;
+    animation: flotar 2.5s infinite ease-in-out;
+    transition: transform .3s;
+    user-select: none;
+}
+
+.ramo:hover {
+    transform: scale(1.1);
+}
+
+.instruccion {
+    font-size: 14px;
+    color: #9b6878;
+    margin-top: 5px;
+}
+
+.carta {
+    display: none;
+    animation: subir .8s ease;
+    text-align: left;
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+.carta h2 {
+    text-align: center;
+    color: #b84c70;
+    margin-bottom: 18px;
+}
+
+.firma {
+    text-align: right;
+    margin-top: 25px;
+    font-style: italic;
+    color: #a04c69;
+}
+
+.corazon {
+    position: fixed;
+    bottom: -30px;
+    font-size: 20px;
+    animation: subirCorazon 6s linear forwards;
+    opacity: .7;
+    pointer-events: none;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes subir {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes flotar {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes subirCorazon {
+    from {
+        transform: translateY(0);
+        opacity: .7;
+    }
+    to {
+        transform: translateY(-110vh);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div id="inicio">
+
+        <h1>Para Ximena 🌷</h1>
+
+        <div class="subtitulo">
+            Un pequeño detalle por el Día de la Amistad
+        </div>
+
+        <div class="ramo" onclick="abrirCarta()">
+            💐
+        </div>
+
+        <p class="instruccion">
+            Toca el ramo para abrirlo 💗
+        </p>
+
+    </div>
+
+    <div class="carta" id="carta">
+
+        <h2>🌷 Feliz Día de la Amistad 🌷</h2>
+
+        <p>
+            Ximena, quería aprovechar este día para darte un pequeño detalle.
+        </p>
+
+        <p>
+            Sé que no es mucho, pero lo hice con mucho cariño porque
+            quería recordarte lo importante que es para mí tener una amiga
+            como tú.
+        </p>
+
+        <p>
+            Gracias por todos los momentos, las conversaciones, las risas
+            y por todas esas pequeñas cosas que hacen que una amistad sea
+            especial.
+        </p>
+
+        <p>
+            Espero que sigamos teniendo muchos momentos más para recordar,
+            y que aunque pase el tiempo, nuestra amistad siga siendo igual
+            de bonita. 💗
+        </p>
+
+        <p>
+            Feliz Día de la Amistad, Ximena.
+            Espero que te guste este pequeño detalle. 🌸
+        </p>
+
+        <div class="firma">
+            Att: Primo Jaime
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+function abrirCarta() {
+
+    document.getElementById("inicio").style.display = "none";
+    document.getElementById("carta").style.display = "block";
+
+    crearCorazones();
+}
+
+function crearCorazones() {
+
+    for (let i = 0; i < 18; i++) {
+
+        setTimeout(() => {
+
+            const corazon = document.createElement("div");
+
+            corazon.className = "corazon";
+
+            const simbolos = ["💗", "💕", "🌸", "♡", "✨"];
+
+            corazon.innerHTML =
+                simbolos[Math.floor(Math.random() * simbolos.length)];
+
+            corazon.style.left =
+                Math.random() * 100 + "vw";
+
+            corazon.style.animationDuration =
+                (4 + Math.random() * 4) + "s";
+
+            document.body.appendChild(corazon);
+
+            setTimeout(() => {
+                corazon.remove();
+            }, 8000);
+
+        }, i * 150);
+    }
+}
+
+</script>
+
+</body>
+</html>
+```
